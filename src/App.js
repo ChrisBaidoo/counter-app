@@ -32,13 +32,22 @@ handleIncrement = (counter) => {
     this.setState({counters})
 }
 
+handleDecrement = (counter) => {
+  console.log(counter)
+  const counters = [...this.state.counters]
+  const index = counters.indexOf(counter);
+  counters[index] = {...counter}
+  counters[index].value--;
+  this.setState({counters})
+}
+
  
   render() { 
     return (
       <div className="App">
-        <Navbar/>
+        <Navbar totalCounters={this.state.counters.filter(counter => counter.value > 0).length}/>
         <main className="container">
-        <Counters   handleDelete={this.handleDelete} counters={this.state.counters} handleIncrement={this.handleIncrement} />
+        <Counters  handleReset={this.handleReset} handleDecrement={this.handleDecrement} handleDelete={this.handleDelete} counters={this.state.counters} handleIncrement={this.handleIncrement} />
         </main>
       </div>
     );
