@@ -9,12 +9,14 @@ class Counter extends Component {
     }
 
     render() {
+        const {handleIncrement, handleDecrement, handleDelete, counter} = this.props
+
         return (
             <React.Fragment>
-                <span className={this.getbadgeClasses()}>{this.props.counter.value}</span>
-                <button className="btn btn-primary m-2" onClick={() => this.props.handleIncrement(this.props.counter)}>Increment</button> 
-                <button className="btn btn-secondary" onClick={() => this.props.handleDecrement(this.props.counter)}>Decrement</button>    
-                <button onClick={() => this.props.handleDelete(this.props.counter.id)} className="btn btn-danger btn-small m-2">Delete</button>
+                <span className={this.getbadgeClasses()}>{counter.value}</span>
+                <button className="btn btn-primary m-2" onClick={() => handleIncrement(counter)}>Increment</button> 
+                <button className="btn btn-secondary" onClick={() => handleDecrement(counter)}>Decrement</button>    
+                <button onClick={() => handleDelete(counter.id)} className="btn btn-danger btn-small m-2">Delete</button>
             </React.Fragment>
         );
 
